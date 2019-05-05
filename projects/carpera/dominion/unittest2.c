@@ -8,8 +8,6 @@
 #include <assert.h>
 
 int main(int argc, char** argv) {
-
-    printf("*****updateCoins Unit Test*****\n");
     
     int numPlayers = 2;
     int currentPlayer = 0;
@@ -33,11 +31,11 @@ int main(int argc, char** argv) {
 
     if(testG.coins == (G.coins + 1))
     {
-        printf("Passed copper test\n");
+        printf("updateCoins(): PASS copper test\n");
     }
     else
     {
-        printf("Failed copper test\n");
+        printf("updateCoins(): FAIL copper test\n");
     }
 
     //Put card into player's hand for new state
@@ -49,11 +47,11 @@ int main(int argc, char** argv) {
 
     if(testG.coins == (G.coins + 3))
     {
-        printf("Passed silver test\n");
+        printf("updateCoins(): PASS silver test\n");
     }
     else
     {
-        printf("Failed silver test\n");
+        printf("updateCoins(): FAIL silver test\n");
     }
 
     //Put card into player's hand for new state
@@ -65,22 +63,22 @@ int main(int argc, char** argv) {
 
     if(testG.coins == (G.coins + 6))
     {
-        printf("Passed gold test\n");
+        printf("updateCoins(): PASS gold test\n");
     }
     else
     {
-        printf("Failed gold test\n");
+        printf("updateCoins(): FAIL gold test\n");
     }
 
     updateCoins(currentPlayer, &testG, 4);
 
     if(testG.coins == (G.coins + 10))
     {
-        printf("Passed bonus test\n");
+        printf("updateCoins(): PASS bonus test\n");
     }
     else
     {
-        printf("Failed bonus test\n");
+        printf("updateCoins(): FAIL bonus test\n");
     }
 
     return 0;

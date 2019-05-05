@@ -9,8 +9,6 @@
 
 int main(int argc, char** argv) {
 
-    printf("*****isGameOver Unit Test*****\n");
-
     int numPlayers = 2;
     struct gameState G;
     int result = 0;
@@ -27,12 +25,11 @@ int main(int argc, char** argv) {
 
     if(result == 1)
     {
-        printf("Passed empty Province stack test\n");
+        printf("isGameOver(): PASS empty Province stack test\n");
     }
     else
     {
-        printf("Failed empty Province stack test\n");
-        printf("Returned: %d", result);
+        printf("isGameOver(): FAIL empty Province stack test\n");
     }
 
     G.supplyCount[estate] = 0;
@@ -42,12 +39,11 @@ int main(int argc, char** argv) {
 
     if(result == 1)
     {
-        printf("Passed empty supply piles test\n");
+        printf("isGameOver(): PASS empty supply piles test\n");
     }
     else
     {
-        printf("Failed empty supply piles test\n");
-        printf("Returned: %d", result);
+        printf("isGameOver(): FAIL empty supply piles test\n");
     }
 
     G.supplyCount[estate] = 2;
@@ -58,12 +54,11 @@ int main(int argc, char** argv) {
 
     if(result == 0)
     {
-        printf("Passed not empty supply piles test\n");
+        printf("isGameOver(): PASS not empty supply piles test\n");
     }
     else
     {
-        printf("Failed not empty supply piles test\n");
-        printf("Returned: %d", result);
+        printf("isGameOver(): FAIL not empty supply piles test\n");
     }
 
     G.supplyCount[estate] = 1;
@@ -74,12 +69,11 @@ int main(int argc, char** argv) {
 
     if(result == 0)
     {
-        printf("Passed almost empty supply piles test\n");
+        printf("isGameOver(): PASS almost empty supply piles test\n");
     }
     else
     {
-        printf("Failed almost empty supply piles test\n");
-        printf("Returned: %d", result);
+        printf("isGameOver(): FAIL almost empty supply piles test\n");
     }
 
 
