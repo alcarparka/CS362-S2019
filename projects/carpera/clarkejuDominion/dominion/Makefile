@@ -73,7 +73,7 @@ myTests: cardtest1.c cardtest2.c cardtest3.c cardtest4.c unittest1.c unittest2.c
 	gcc -o randomtestcard1 -g randomtestcard1.c dominion.o rngs.o $(CFLAGS)
 	gcc -o randomtestcard2 -g randomtestcard2.c dominion.o rngs.o $(CFLAGS)
 
-mytestresults: cardtest1 cardtest2 cardtest3 cardtest4 unittest1 unittest2 unittest3 unittest4 randomtestadventurer randomtestcard1 randomtestcard2
+mytestresults: cardtest1 cardtest2 cardtest3 cardtest4 unittest1 unittest2 unittest3 unittest4
 	touch mytestresults.out
 	./cardtest1 >> mytestresults.out
 	./cardtest2 >> mytestresults.out
@@ -83,11 +83,16 @@ mytestresults: cardtest1 cardtest2 cardtest3 cardtest4 unittest1 unittest2 unitt
 	./unittest2 >> mytestresults.out
 	./unittest3 >> mytestresults.out
 	./unittest4 >> mytestresults.out
-	./randomtestadventurer >> mytestresults.out
-	./randomtestcard1 >> mytestresults.out
-	./randomtestcard2 >> mytestresults.out
 	gcov -b dominion.c >> mytestresults.out
 	cat dominion.c.gcov >> mytestresults.out
+
+randomtestresults: randomtestadventurer randomtestcard1 randomtestcard2
+	touch randomtestresults.out
+	./randomtestadventurer >> randomtestresults.out
+	./randomtestcard1 >> randomtestresults.out
+	./randomtestcard2 >> randomtestresults.out
+	gcov -b dominion.c >> randomtestresults.out
+	cat dominion.c.gcov >> randomtestresults.out
 
 runtests: testDrawCard
 	./testDrawCard &> unittestresult.out
@@ -98,7 +103,7 @@ runtests: testDrawCard
 player: player.c interface.o
 	gcc -o player player.c -g dominion.o rngs.o interface.o $(CFLAGS)
 
-all: playdom player myTests mytestresults
+all: playdom player myTests mytestresults randomtestresults
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe randomtestadventurer randomtestadventurer.exe randomtestcard1 randomtestcard1.exe randomtestcard2 randomtestcard2.exe mytestresults.out cardtest1 cardtest1.exe cardtest2 cardtest2.exe cardtest3 cardtest3.exe cardtest4 cardtest4.exe unittest1 unittest1.exe unittest2 unittest2.exe unittest3 unittest3.exe unittest4 unittest4.exe unittestresults.out *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe 
+	rm -f *.o playdom.exe playdom player player.exe randomtestadventurer randomtestadventurer.exe randomtestcard1 randomtestcard1.exe randomtestcard2 randomtestcard2.exe mytestresults.out randomtestresults.out cardtest1 cardtest1.exe cardtest2 cardtest2.exe cardtest3 cardtest3.exe cardtest4 cardtest4.exe unittest1 unittest1.exe unittest2 unittest2.exe unittest3 unittest3.exe unittest4 unittest4.exe unittestresults.out *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe 
